@@ -25,13 +25,14 @@ public class UEditorController {
     public void config(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("application/json");
         String rootPath = request.getSession().getServletContext().getRealPath("/");
+//		System.out.println("rootPath = " + rootPath);
         try {
             String exec = new ActionEnter(request, rootPath).exec();
             PrintWriter writer = response.getWriter();
             writer.write(exec);
             writer.flush();
             writer.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
