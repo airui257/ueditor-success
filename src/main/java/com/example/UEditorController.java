@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
@@ -15,7 +14,6 @@ import java.io.PrintWriter;
 @Controller
 public class UEditorController {
 
-
     @RequestMapping("/")
     private String showPage(){
         return "index";
@@ -23,7 +21,9 @@ public class UEditorController {
 
     @RequestMapping(value="/config")
     public void config(HttpServletRequest request, HttpServletResponse response) {
-        response.setContentType("application/json");
+//        response.setContentType("application/json");
+		response.setHeader("Access-Control-Allow-Origin","*");
+		response.setHeader("Access-Control-Allow-Headers","X-Requested-With,X_Requested_With");
         String rootPath = request.getSession().getServletContext().getRealPath("/");
 //		System.out.println("rootPath = " + rootPath);
         try {
@@ -37,4 +37,5 @@ public class UEditorController {
         }
 
     }
+
 }
