@@ -83,6 +83,7 @@ public class BinaryUploader {
 			storageState.putInfo("original", originFileName);
 			storageState.putInfo("size", maxSize);
 			storageState.putInfo("title", split[split.length - 1]);
+			System.out.println("storageState = " + storageState);
 			return storageState;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -22,12 +22,14 @@ public class UEditorController {
     @RequestMapping(value="/config")
     public void config(HttpServletRequest request, HttpServletResponse response) {
 //        response.setContentType("application/json");
-		response.setHeader("Access-Control-Allow-Origin","*");
+//		response.setHeader("Access-Control-Allow-Origin","*");
 		response.setHeader("Access-Control-Allow-Headers","X-Requested-With,X_Requested_With");
         String rootPath = request.getSession().getServletContext().getRealPath("/");
 //		System.out.println("rootPath = " + rootPath);
         try {
-            String exec = new ActionEnter(request, rootPath).exec();
+			ActionEnter actionEnter = new ActionEnter(request, rootPath);
+			String exec = actionEnter.exec();
+			System.out.println("exec = " + exec);
             PrintWriter writer = response.getWriter();
             writer.write(exec);
             writer.flush();
